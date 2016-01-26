@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96DBA6941C5763EB0072AF2A /* WLMenuCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DBA6921C5763EB0072AF2A /* WLMenuCategoryViewController.m */; };
+		96DBA6951C5763EB0072AF2A /* WLMenuCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96DBA6931C5763EB0072AF2A /* WLMenuCategoryViewController.xib */; };
 		D23B07001C571BD5002FFC0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B06FF1C571BD5002FFC0E /* main.m */; };
 		D23B07031C571BD5002FFC0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B07021C571BD5002FFC0E /* AppDelegate.m */; };
 		D23B07091C571BD5002FFC0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23B07071C571BD5002FFC0E /* Main.storyboard */; };
@@ -22,9 +24,13 @@
 		D23B072A1C57231B002FFC0E /* WLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B07291C57231B002FFC0E /* WLMainViewController.m */; };
 		D23B07301C573D25002FFC0E /* WLMenuDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B072F1C573D25002FFC0E /* WLMenuDataManager.m */; };
 		D23B07351C573E4C002FFC0E /* WLMenuCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B07341C573E4C002FFC0E /* WLMenuCategory.m */; };
+		D23B07381C575434002FFC0E /* WLNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B07371C575434002FFC0E /* WLNaviViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		96DBA6911C5763EB0072AF2A /* WLMenuCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLMenuCategoryViewController.h; sourceTree = "<group>"; };
+		96DBA6921C5763EB0072AF2A /* WLMenuCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLMenuCategoryViewController.m; sourceTree = "<group>"; };
+		96DBA6931C5763EB0072AF2A /* WLMenuCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WLMenuCategoryViewController.xib; sourceTree = "<group>"; };
 		D23B06FB1C571BD5002FFC0E /* WLCookbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WLCookbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23B06FF1C571BD5002FFC0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D23B07011C571BD5002FFC0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -46,6 +52,8 @@
 		D23B072F1C573D25002FFC0E /* WLMenuDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WLMenuDataManager.m; path = ../Models/WLMenuDataManager.m; sourceTree = "<group>"; };
 		D23B07331C573E4C002FFC0E /* WLMenuCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLMenuCategory.h; sourceTree = "<group>"; };
 		D23B07341C573E4C002FFC0E /* WLMenuCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLMenuCategory.m; sourceTree = "<group>"; };
+		D23B07361C575434002FFC0E /* WLNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLNaviViewController.h; sourceTree = "<group>"; };
+		D23B07371C575434002FFC0E /* WLNaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLNaviViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,8 @@
 		D23B072B1C573D07002FFC0E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D23B07361C575434002FFC0E /* WLNaviViewController.h */,
+				D23B07371C575434002FFC0E /* WLNaviViewController.m */,
 				D23B07281C57231B002FFC0E /* WLMainViewController.h */,
 				D23B07291C57231B002FFC0E /* WLMainViewController.m */,
 			);
@@ -140,6 +150,9 @@
 		D23B072D1C573D07002FFC0E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				96DBA6911C5763EB0072AF2A /* WLMenuCategoryViewController.h */,
+				96DBA6921C5763EB0072AF2A /* WLMenuCategoryViewController.m */,
+				96DBA6931C5763EB0072AF2A /* WLMenuCategoryViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96DBA6951C5763EB0072AF2A /* WLMenuCategoryViewController.xib in Resources */,
 				D23B07111C571BD5002FFC0E /* LaunchScreen.storyboard in Resources */,
 				D23B070E1C571BD5002FFC0E /* Assets.xcassets in Resources */,
 				D23B07091C571BD5002FFC0E /* Main.storyboard in Resources */,
@@ -236,9 +250,11 @@
 			files = (
 				D23B070C1C571BD5002FFC0E /* WLCookbook.xcdatamodeld in Sources */,
 				D23B07351C573E4C002FFC0E /* WLMenuCategory.m in Sources */,
+				D23B07381C575434002FFC0E /* WLNaviViewController.m in Sources */,
 				D23B072A1C57231B002FFC0E /* WLMainViewController.m in Sources */,
 				D23B07301C573D25002FFC0E /* WLMenuDataManager.m in Sources */,
 				D23B07031C571BD5002FFC0E /* AppDelegate.m in Sources */,
+				96DBA6941C5763EB0072AF2A /* WLMenuCategoryViewController.m in Sources */,
 				D23B07001C571BD5002FFC0E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

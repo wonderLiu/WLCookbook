@@ -27,7 +27,6 @@
 
 -(NSString *)description
 {
-    //WLMenuCategory *menu = [WLMenuCategory new];
     return [NSString stringWithFormat:@"id--> %@,name -->%@",self.ctgId,self.name];
 }
 

@@ -13,6 +13,8 @@
 @property (nonatomic,strong)NSString *ctgId;
 /** 菜谱分类类型*/
 @property (nonatomic,strong)NSString *name;
+/** 菜谱分类类型子分类*/
+@property (nonatomic,strong)NSArray *subCategory;
 
 +(id)menuCategoryFromDict:(NSDictionary*)menuCategoryDict;
 

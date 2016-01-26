@@ -10,13 +10,22 @@
 #import <mobAPI/mobAPI.h>
 #import <MOBFoundation/MOBFJson.h>
 #import "WLMenuDataManager.h"
+#import "WLMenuCategory.h"
 
 @interface WLMainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *apiTableView;
+@property (nonatomic,strong) NSArray *menuCategoryArray;
 @end
 
 @implementation WLMainViewController
+
+-(NSArray*)menuCategoryArray {
+    if (!_menuCategoryArray) {
+        _menuCategoryArray = [NSArray array];
+    }
+    return _menuCategoryArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,6 +35,16 @@
     [self.view addSubview:apiTV];
     _apiTableView = apiTV;
     [self getCookCategoryList];
+    UIButton *btn = [[UIButton alloc]init];
+    btn.frame = CGRectMake(0, 0, 200, 44);
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn setTitle:@"美食汇" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(clickToChangeCategory) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.titleView = btn;
+}
+
+-(void)clickToChangeCategory{
+    NSLog(@"12345678");
 }
 
 #pragma mark - Private
@@ -68,9 +87,9 @@
                        logContent = [NSString stringWithFormat:@"request success!\n%@", [MOBFJson jsonStringFromObject:response.responder]];
 //                       NSLog(@"%@", logContent);
                        NSLog(@"%@",response.responder);
-                       NSArray *array = [WLMenuDataManager menuCategoryFromJSON:response.responder];
-                       //                       NSLog(@"%@", logContent);
-                       NSLog(@"%@",[array description]);
+                       self.menuCategoryArray = [WLMenuDataManager menuCategoryFromJSON:response.responder];
+                       NSLog(@"%@",self.menuCategoryArray);
+                       [self.apiTableView reloadData];
                    }
                    //[theController showLog:logContent];
                }];
@@ -78,7 +97,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.menuCategoryArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -88,6 +107,9 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     cell.contentView.backgroundColor = [UIColor orangeColor];
+    WLMenuCategory *menuCtg = self.menuCategoryArray[indexPath.row];
+    cell.textLabel.text = menuCtg.name;
+    cell.detailTextLabel.text = menuCtg.ctgId;
     return cell;
 }
 
