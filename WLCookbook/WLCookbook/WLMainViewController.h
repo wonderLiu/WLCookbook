@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WLMainViewController.h
 //  WLCookbook
 //
 //  Created by wonderLiu on 16/1/26.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface WLMainViewController : UIViewController
 
 @end
-

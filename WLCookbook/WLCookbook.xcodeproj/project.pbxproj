@@ -9,11 +9,17 @@
 /* Begin PBXBuildFile section */
 		D23B07001C571BD5002FFC0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B06FF1C571BD5002FFC0E /* main.m */; };
 		D23B07031C571BD5002FFC0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B07021C571BD5002FFC0E /* AppDelegate.m */; };
-		D23B07061C571BD5002FFC0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B07051C571BD5002FFC0E /* ViewController.m */; };
 		D23B07091C571BD5002FFC0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23B07071C571BD5002FFC0E /* Main.storyboard */; };
 		D23B070C1C571BD5002FFC0E /* WLCookbook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D23B070A1C571BD5002FFC0E /* WLCookbook.xcdatamodeld */; };
 		D23B070E1C571BD5002FFC0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23B070D1C571BD5002FFC0E /* Assets.xcassets */; };
 		D23B07111C571BD5002FFC0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23B070F1C571BD5002FFC0E /* LaunchScreen.storyboard */; };
+		D23B071B1C571D97002FFC0E /* mobAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B07191C571D97002FFC0E /* mobAPI.framework */; };
+		D23B071C1C571D97002FFC0E /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B071A1C571D97002FFC0E /* MOBFoundation.framework */; };
+		D23B071E1C571DD9002FFC0E /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B071D1C571DD9002FFC0E /* libicucore.tbd */; };
+		D23B07201C571DE1002FFC0E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B071F1C571DE1002FFC0E /* libz.tbd */; };
+		D23B07221C571DEA002FFC0E /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B07211C571DEA002FFC0E /* libstdc++.tbd */; };
+		D23B07241C571DEF002FFC0E /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23B07231C571DEF002FFC0E /* JavaScriptCore.framework */; };
+		D23B072A1C57231B002FFC0E /* WLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B07291C57231B002FFC0E /* WLMainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +27,19 @@
 		D23B06FF1C571BD5002FFC0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D23B07011C571BD5002FFC0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D23B07021C571BD5002FFC0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D23B07041C571BD5002FFC0E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D23B07051C571BD5002FFC0E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D23B07081C571BD5002FFC0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D23B070B1C571BD5002FFC0E /* WLCookbook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WLCookbook.xcdatamodel; sourceTree = "<group>"; };
 		D23B070D1C571BD5002FFC0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D23B07101C571BD5002FFC0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D23B07121C571BD5002FFC0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D23B07191C571D97002FFC0E /* mobAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = mobAPI.framework; sourceTree = "<group>"; };
+		D23B071A1C571D97002FFC0E /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
+		D23B071D1C571DD9002FFC0E /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		D23B071F1C571DE1002FFC0E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		D23B07211C571DEA002FFC0E /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		D23B07231C571DEF002FFC0E /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		D23B07281C57231B002FFC0E /* WLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLMainViewController.h; sourceTree = "<group>"; };
+		D23B07291C57231B002FFC0E /* WLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLMainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +47,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23B07241C571DEF002FFC0E /* JavaScriptCore.framework in Frameworks */,
+				D23B07221C571DEA002FFC0E /* libstdc++.tbd in Frameworks */,
+				D23B07201C571DE1002FFC0E /* libz.tbd in Frameworks */,
+				D23B071E1C571DD9002FFC0E /* libicucore.tbd in Frameworks */,
+				D23B071C1C571D97002FFC0E /* MOBFoundation.framework in Frameworks */,
+				D23B071B1C571D97002FFC0E /* mobAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,10 +78,11 @@
 		D23B06FD1C571BD5002FFC0E /* WLCookbook */ = {
 			isa = PBXGroup;
 			children = (
+				D23B07181C571D97002FFC0E /* libraries */,
 				D23B07011C571BD5002FFC0E /* AppDelegate.h */,
 				D23B07021C571BD5002FFC0E /* AppDelegate.m */,
-				D23B07041C571BD5002FFC0E /* ViewController.h */,
-				D23B07051C571BD5002FFC0E /* ViewController.m */,
+				D23B07281C57231B002FFC0E /* WLMainViewController.h */,
+				D23B07291C57231B002FFC0E /* WLMainViewController.m */,
 				D23B07071C571BD5002FFC0E /* Main.storyboard */,
 				D23B070D1C571BD5002FFC0E /* Assets.xcassets */,
 				D23B070F1C571BD5002FFC0E /* LaunchScreen.storyboard */,
@@ -80,6 +99,19 @@
 				D23B06FF1C571BD5002FFC0E /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D23B07181C571D97002FFC0E /* libraries */ = {
+			isa = PBXGroup;
+			children = (
+				D23B07231C571DEF002FFC0E /* JavaScriptCore.framework */,
+				D23B07211C571DEA002FFC0E /* libstdc++.tbd */,
+				D23B071F1C571DE1002FFC0E /* libz.tbd */,
+				D23B071D1C571DD9002FFC0E /* libicucore.tbd */,
+				D23B07191C571D97002FFC0E /* mobAPI.framework */,
+				D23B071A1C571D97002FFC0E /* MOBFoundation.framework */,
+			);
+			path = libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,8 +184,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D23B07061C571BD5002FFC0E /* ViewController.m in Sources */,
 				D23B070C1C571BD5002FFC0E /* WLCookbook.xcdatamodeld in Sources */,
+				D23B072A1C57231B002FFC0E /* WLMainViewController.m in Sources */,
 				D23B07031C571BD5002FFC0E /* AppDelegate.m in Sources */,
 				D23B07001C571BD5002FFC0E /* main.m in Sources */,
 			);
@@ -265,6 +297,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WLCookbook/libraries",
+				);
 				INFOPLIST_FILE = WLCookbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wonder.WLCookbook;
@@ -276,6 +312,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WLCookbook/libraries",
+				);
 				INFOPLIST_FILE = WLCookbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wonder.WLCookbook;
