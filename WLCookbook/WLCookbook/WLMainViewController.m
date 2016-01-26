@@ -9,6 +9,7 @@
 #import "WLMainViewController.h"
 #import <mobAPI/mobAPI.h>
 #import <MOBFoundation/MOBFJson.h>
+#import "WLMenuDataManager.h"
 
 @interface WLMainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -62,10 +63,14 @@
                    NSString *logContent = nil;
                    if (response.error) {
                        logContent = [NSString stringWithFormat:@"request error!\n%@", response.error];
-                       NSLog(@"%@", logContent);
+                       NSLog(@"%@",logContent);
                    } else {
                        logContent = [NSString stringWithFormat:@"request success!\n%@", [MOBFJson jsonStringFromObject:response.responder]];
-                       NSLog(@"%@", logContent);
+//                       NSLog(@"%@", logContent);
+                       NSLog(@"%@",response.responder);
+                       NSArray *array = [WLMenuDataManager menuCategoryFromJSON:response.responder];
+                       //                       NSLog(@"%@", logContent);
+                       NSLog(@"%@",[array description]);
                    }
                    //[theController showLog:logContent];
                }];
