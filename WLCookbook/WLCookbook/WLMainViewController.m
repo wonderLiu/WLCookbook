@@ -47,8 +47,11 @@
 -(void)clickToChangeCategory{
     WLMenuCategoryViewController *ctgViewController = [WLMenuCategoryViewController new];
     ctgViewController.modalPresentationStyle = UIModalPresentationPopover;
-    //ctgViewController.popoverPresentationController.so
-    NSLog(@"12345678");
+    ctgViewController.popoverPresentationController.sourceView = self.navigationItem.titleView;
+    ctgViewController.popoverPresentationController.sourceRect = self.navigationItem.titleView.bounds;
+    ctgViewController.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    [self.navigationController pushViewController:ctgViewController animated:YES];
+    NSLog(@"%@",NSStringFromCGRect(ctgViewController.view.frame));
 }
 
 #pragma mark - Private

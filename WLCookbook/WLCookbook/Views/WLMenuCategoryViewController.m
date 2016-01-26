@@ -28,11 +28,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.preferredContentSize = CGSizeMake(280, 400);
+    self.preferredContentSize = CGSizeMake(140, 200);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    //self.view.backgroundColor = [UIColor brownColor];
     // Dispose of any resources that can be recreated.
 }
 
@@ -47,6 +48,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    cell.contentView.backgroundColor = [UIColor blackColor];
     return cell;
 }
 
