@@ -11,6 +11,7 @@
 #import <MOBFoundation/MOBFJson.h>
 #import "WLMenuDataManager.h"
 #import "WLMenuCategory.h"
+#import "WLMenuCategoryViewController.h"
 
 @interface WLMainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -44,6 +45,9 @@
 }
 
 -(void)clickToChangeCategory{
+    WLMenuCategoryViewController *ctgViewController = [WLMenuCategoryViewController new];
+    ctgViewController.modalPresentationStyle = UIModalPresentationPopover;
+    //ctgViewController.popoverPresentationController.so
     NSLog(@"12345678");
 }
 

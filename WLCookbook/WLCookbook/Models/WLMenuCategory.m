@@ -20,6 +20,7 @@
     if (self = [super init]) {
         self.name = menuCategoryDict[@"categoryInfo"][@"name"];
         self.ctgId = menuCategoryDict[@"categoryInfo"][@"ctgId"];
+        self.subCategory = menuCategoryDict[@"childs"];
     }
     return self;
 }

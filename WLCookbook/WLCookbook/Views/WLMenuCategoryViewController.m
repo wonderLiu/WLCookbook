@@ -7,23 +7,47 @@
 //
 
 #import "WLMenuCategoryViewController.h"
+#import "WLMenuDataManager.h"
 
 @interface WLMenuCategoryViewController ()<UITableViewDelegate,UITableViewDataSource>
+/** 菜单类型数组*/
+@property (nonatomic,strong)NSArray *menuCategoryArray;
+
 @property (weak, nonatomic) IBOutlet UITableView *leftTableView;
 @property (weak, nonatomic) IBOutlet UITableView *rightTableView;
 
 @end
 
 @implementation WLMenuCategoryViewController
+//-(NSArray *)menuCategoryArray
+//{
+//    if (!_menuCategoryArray) {
+//        _menuCategoryArray = [WLMenuDataManager me]
+//    }
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.preferredContentSize = CGSizeMake(280, 400);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    return cell;
 }
 
 /*
