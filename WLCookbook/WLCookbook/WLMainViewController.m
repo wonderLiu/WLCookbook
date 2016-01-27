@@ -13,10 +13,12 @@
 #import "WLMenuCategory.h"
 #import "WLMenuCategoryViewController.h"
 
-@interface WLMainViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface WLMainViewController ()<UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate>
 
-@property (nonatomic, strong) UITableView *apiTableView;
+@property (nonatomic, strong) UITableView *menuTableView;
 @property (nonatomic,strong) NSArray *menuCategoryArray;
+/** 弹出的popView*/
+@property (nonatomic,strong) WLMenuCategoryViewController *ctgViewController;
 @end
 
 @implementation WLMainViewController
@@ -28,14 +30,34 @@
     return _menuCategoryArray;
 }
 
+-(UITableView *)menuTableView
+{
+    if (!_menuTableView) {
+        _menuTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
+        _menuTableView.delegate = self;
+        _menuTableView.dataSource = self;
+        [self.view addSubview:_menuTableView];
+    }
+    return _menuTableView;
+}
+
+-(WLMenuCategoryViewController *)ctgViewController
+{
+    if (!_ctgViewController) {
+        _ctgViewController = [[WLMenuCategoryViewController alloc]init];
+    }
+    return _ctgViewController;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UITableView *apiTV = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    [apiTV setDelegate:self];
-    [apiTV setDataSource:self];
-    [self.view addSubview:apiTV];
-    _apiTableView = apiTV;
     [self getCookCategoryList];
+    [self setNavigationCenterButton];
+}
+
+/** 导航栏添加中间按钮*/
+-(void)setNavigationCenterButton
+{
     UIButton *btn = [[UIButton alloc]init];
     btn.frame = CGRectMake(0, 0, 200, 44);
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -45,37 +67,44 @@
 }
 
 -(void)clickToChangeCategory{
-    WLMenuCategoryViewController *ctgViewController = [WLMenuCategoryViewController new];
-    ctgViewController.modalPresentationStyle = UIModalPresentationPopover;
-    ctgViewController.popoverPresentationController.sourceView = self.navigationItem.titleView;
-    ctgViewController.popoverPresentationController.sourceRect = self.navigationItem.titleView.bounds;
-    ctgViewController.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
-    [self.navigationController pushViewController:ctgViewController animated:YES];
-    NSLog(@"%@",NSStringFromCGRect(ctgViewController.view.frame));
+    self.ctgViewController.modalPresentationStyle = UIModalPresentationPopover;
+    self.ctgViewController.popoverPresentationController.sourceView = self.navigationItem.titleView;
+    self.ctgViewController.popoverPresentationController.sourceRect = self.navigationItem.titleView.bounds;
+    self.ctgViewController.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    self.ctgViewController.popoverPresentationController.delegate = self;
+    [self presentViewController:self.ctgViewController animated:YES completion:nil];
+}
+
+-(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
+{
+    return UIModalPresentationNone;
 }
 
 #pragma mark - Private
-//- (void)waitLoading:(BOOL)flag
-//{
-//    static UIView *loadingView = nil;
-//    if (!loadingView)
-//    {
-//        loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
-//        loadingView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
-//        loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//        
-//        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-//        [indicatorView sizeToFit];
-//        indicatorView.frame = CGRectMake((loadingView.frame.size.width - indicatorView.frame.size.width) / 2, (loadingView.frame.size.height - indicatorView.frame.size.height) / 2, indicatorView.frame.size.width, indicatorView.frame.size.height);
-//        indicatorView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
-//        [indicatorView startAnimating];
-//        [loadingView addSubview:indicatorView];
-//        
-//        [self.view addSubview:loadingView];
-//    }
-//    
-//    loadingView.hidden = !flag;
-//}
+/**
+ //- (void)waitLoading:(BOOL)flag
+ //{
+ //    static UIView *loadingView = nil;
+ //    if (!loadingView)
+ //    {
+ //        loadingView = [[UIView alloc] initWithFrame:self.view.bounds];
+ //        loadingView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+ //        loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+ //
+ //        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+ //        [indicatorView sizeToFit];
+ //        indicatorView.frame = CGRectMake((loadingView.frame.size.width - indicatorView.frame.size.width) / 2, (loadingView.frame.size.height - indicatorView.frame.size.height) / 2, indicatorView.frame.size.width, indicatorView.frame.size.height);
+ //        indicatorView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+ //        [indicatorView startAnimating];
+ //        [loadingView addSubview:indicatorView];
+ //
+ //        [self.view addSubview:loadingView];
+ //    }
+ //
+ //    loadingView.hidden = !flag;
+ //}
+
+ */
 
 /**
  *  获取菜谱分类
@@ -92,11 +121,10 @@
                        NSLog(@"%@",logContent);
                    } else {
                        logContent = [NSString stringWithFormat:@"request success!\n%@", [MOBFJson jsonStringFromObject:response.responder]];
-//                       NSLog(@"%@", logContent);
                        NSLog(@"%@",response.responder);
-                       self.menuCategoryArray = [WLMenuDataManager menuCategoryFromJSON:response.responder];
+                       self.menuCategoryArray = [WLMenuDataManager menuCategoryFromJSON:response.responder isSubMenuCategory:NO];
                        NSLog(@"%@",self.menuCategoryArray);
-                       [self.apiTableView reloadData];
+                       [self.menuTableView reloadData];
                    }
                    //[theController showLog:logContent];
                }];

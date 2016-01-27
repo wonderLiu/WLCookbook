@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96AF30761C589EE80051D24E /* WLSubMenuCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 96AF30751C589EE80051D24E /* WLSubMenuCategory.m */; };
 		96DBA6941C5763EB0072AF2A /* WLMenuCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DBA6921C5763EB0072AF2A /* WLMenuCategoryViewController.m */; };
 		96DBA6951C5763EB0072AF2A /* WLMenuCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96DBA6931C5763EB0072AF2A /* WLMenuCategoryViewController.xib */; };
 		D23B07001C571BD5002FFC0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B06FF1C571BD5002FFC0E /* main.m */; };
@@ -28,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		96AF30741C589EE80051D24E /* WLSubMenuCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLSubMenuCategory.h; sourceTree = "<group>"; };
+		96AF30751C589EE80051D24E /* WLSubMenuCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLSubMenuCategory.m; sourceTree = "<group>"; };
 		96DBA6911C5763EB0072AF2A /* WLMenuCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLMenuCategoryViewController.h; sourceTree = "<group>"; };
 		96DBA6921C5763EB0072AF2A /* WLMenuCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLMenuCategoryViewController.m; sourceTree = "<group>"; };
 		96DBA6931C5763EB0072AF2A /* WLMenuCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WLMenuCategoryViewController.xib; sourceTree = "<group>"; };
@@ -143,6 +146,8 @@
 			children = (
 				D23B07331C573E4C002FFC0E /* WLMenuCategory.h */,
 				D23B07341C573E4C002FFC0E /* WLMenuCategory.m */,
+				96AF30741C589EE80051D24E /* WLSubMenuCategory.h */,
+				96AF30751C589EE80051D24E /* WLSubMenuCategory.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				D23B070C1C571BD5002FFC0E /* WLCookbook.xcdatamodeld in Sources */,
 				D23B07351C573E4C002FFC0E /* WLMenuCategory.m in Sources */,
 				D23B07381C575434002FFC0E /* WLNaviViewController.m in Sources */,
+				96AF30761C589EE80051D24E /* WLSubMenuCategory.m in Sources */,
 				D23B072A1C57231B002FFC0E /* WLMainViewController.m in Sources */,
 				D23B07301C573D25002FFC0E /* WLMenuDataManager.m in Sources */,
 				D23B07031C571BD5002FFC0E /* AppDelegate.m in Sources */,

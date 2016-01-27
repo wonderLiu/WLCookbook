@@ -8,10 +8,14 @@
 
 #import "WLMenuCategoryViewController.h"
 #import "WLMenuDataManager.h"
+#import "WLSubMenuCategory.h"
+#import "WLMenuCategory.h"
 
 @interface WLMenuCategoryViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** 菜单类型数组*/
 @property (nonatomic,strong)NSArray *menuCategoryArray;
+/** 菜单文件路径*/
+@property (nonatomic,strong)NSString *menuPath;
 
 @property (weak, nonatomic) IBOutlet UITableView *leftTableView;
 @property (weak, nonatomic) IBOutlet UITableView *rightTableView;
@@ -19,37 +23,70 @@
 @end
 
 @implementation WLMenuCategoryViewController
-//-(NSArray *)menuCategoryArray
-//{
-//    if (!_menuCategoryArray) {
-//        _menuCategoryArray = [WLMenuDataManager me]
-//    }
-//}
+
+-(NSString *)menuPath
+{
+    if (!_menuPath) {
+        NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+        _menuPath = [docPath stringByAppendingPathComponent:@"menuCtg"];
+    }
+    return _menuPath;
+}
+
+-(NSArray *)menuCategoryArray
+{
+    if (!_menuCategoryArray) {
+        NSData *data = [NSData dataWithContentsOfFile:self.menuPath];
+        NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+        _menuCategoryArray = [unArchiver decodeObjectForKey:@"menuCategoryArray"];
+        [unArchiver finishDecoding];
+    }
+    return _menuCategoryArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.preferredContentSize = CGSizeMake(140, 200);
+    self.preferredContentSize = CGSizeMake(280, 320);
+    self.view.backgroundColor = [UIColor brownColor];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    //self.view.backgroundColor = [UIColor brownColor];
     // Dispose of any resources that can be recreated.
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    if (tableView == self.leftTableView) {
+        return self.menuCategoryArray.count;
+    }else{
+        NSInteger selectedRow = [self.leftTableView indexPathForSelectedRow].row;
+        NSArray *subMenuCategoryArray = self.menuCategoryArray[selectedRow];
+        return subMenuCategoryArray.count;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    if (tableView == self.leftTableView) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        }
+        WLMenuCategory *menuCategory = self.menuCategoryArray[indexPath.row];
+        cell.textLabel.text = menuCategory.name;
+        cell.contentView.backgroundColor = [UIColor blackColor];
+        return cell;
+    }else{
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        }
+        NSInteger selectedRow = [self.leftTableView indexPathForSelectedRow].row;
+        NSArray *subMenuCategoryArray = self.menuCategoryArray[selectedRow];
+        cell.textLabel.text = subMenuCategoryArray[indexPath.row];
+        return cell;
     }
-    cell.contentView.backgroundColor = [UIColor blackColor];
-    return cell;
 }
 
 /*

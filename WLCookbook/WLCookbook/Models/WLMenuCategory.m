@@ -25,10 +25,30 @@
     return self;
 }
 
-
+//重写description方法
 -(NSString *)description
 {
     return [NSString stringWithFormat:@"id--> %@,name -->%@",self.ctgId,self.name];
+}
+
+#pragma mark - NSCoding
+//编码操作
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.ctgId forKey:@"ctgId"];
+    [aCoder encodeObject:self.subCategory forKey:@"subCategory"];
+}
+
+//解码操作
+-(instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super init]) {
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+        self.ctgId = [aDecoder decodeObjectForKey:@"ctgId"];
+        self.subCategory = [aDecoder decodeObjectForKey:@"subCategory"];
+    }
+    return self;
 }
 
 
