@@ -10,6 +10,7 @@
 #import "WLMenuDataManager.h"
 #import "WLSubMenuCategory.h"
 #import "WLMenuCategory.h"
+#import "WLTableViewCell.h"
 
 @interface WLMenuCategoryViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** 菜单类型数组*/
@@ -46,15 +47,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.preferredContentSize = CGSizeMake(280, 320);
+//    self.preferredContentSize = CGSizeMake(280, 320);
     self.view.backgroundColor = [UIColor brownColor];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+#pragma mark - UITableViewDelegate,UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == self.leftTableView) {
@@ -69,24 +66,27 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == self.leftTableView) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        if (!cell) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        }
+        WLTableViewCell *cell = [WLTableViewCell cellWithTableView:tableView withImageName:@"bg_dropdown_leftpart" withHighlightedImageName:@"bg_dropdown_left_selected"];
         WLMenuCategory *menuCategory = self.menuCategoryArray[indexPath.row];
         cell.textLabel.text = menuCategory.name;
         cell.contentView.backgroundColor = [UIColor blackColor];
         return cell;
     }else{
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        if (!cell) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        }
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//        if (!cell) {
+//            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        //        }
+        WLTableViewCell *cell = [WLTableViewCell cellWithTableView:tableView withImageName:@"bg_dropdown_leftpart" withHighlightedImageName:@"bg_dropdown_left_selected"];
         NSInteger selectedRow = [self.leftTableView indexPathForSelectedRow].row;
         NSArray *subMenuCategoryArray = self.menuCategoryArray[selectedRow];
         cell.textLabel.text = subMenuCategoryArray[indexPath.row];
         return cell;
     }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 /*
