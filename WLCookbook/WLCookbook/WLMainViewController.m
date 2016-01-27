@@ -121,8 +121,8 @@
                        NSLog(@"%@",logContent);
                    } else {
                        logContent = [NSString stringWithFormat:@"request success!\n%@", [MOBFJson jsonStringFromObject:response.responder]];
-                       NSLog(@"%@",response.responder);
-                       self.menuCategoryArray = [WLMenuDataManager menuCategoryFromJSON:response.responder isSubMenuCategory:NO];
+                       //NSLog(@"%@",response.responder);
+                       self.menuCategoryArray = [WLMenuDataManager menuCategoryFromJSON:response.responder ];
                        NSLog(@"%@",self.menuCategoryArray);
                        [self.menuTableView reloadData];
                    }

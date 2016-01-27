@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WLSubMenuCategory : NSObject
+@interface WLSubMenuCategory : NSObject <NSCoding>
 /** 菜谱子分类ID*/
 @property (nonatomic,strong)NSString *ctgId;
 /** 菜谱子分类类型名称*/

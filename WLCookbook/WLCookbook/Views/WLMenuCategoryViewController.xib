@@ -22,8 +22,8 @@
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="RYb-lX-eBS"/>
-                        <outlet property="delegate" destination="-1" id="PKr-Cz-MCA"/>
+                        <outlet property="dataSource" destination="-1" id="gZn-pD-zn0"/>
+                        <outlet property="delegate" destination="-1" id="wa9-Pa-RJZ"/>
                     </connections>
                 </tableView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pe1-Gh-ZjQ">
@@ -31,8 +31,8 @@
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="Nf5-2F-0oh"/>
-                        <outlet property="delegate" destination="-1" id="04W-Ar-hO5"/>
+                        <outlet property="dataSource" destination="-1" id="SRA-dk-eIz"/>
+                        <outlet property="delegate" destination="-1" id="gYi-y6-jWA"/>
                     </connections>
                 </tableView>
             </subviews>

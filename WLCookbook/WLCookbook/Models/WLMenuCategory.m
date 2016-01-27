@@ -7,6 +7,7 @@
 //
 
 #import "WLMenuCategory.h"
+#import "WLSubMenuCategory.h"
 
 @implementation WLMenuCategory
 
@@ -20,7 +21,15 @@
     if (self = [super init]) {
         self.name = menuCategoryDict[@"categoryInfo"][@"name"];
         self.ctgId = menuCategoryDict[@"categoryInfo"][@"ctgId"];
-        self.subCategory = menuCategoryDict[@"childs"];
+        NSArray *subMenuArray = menuCategoryDict[@"childs"];
+        NSMutableArray *mArray = [NSMutableArray array];
+        for (NSDictionary *dict in subMenuArray) {
+            WLSubMenuCategory *subMenuCategory = [WLSubMenuCategory new];
+            subMenuCategory.name = dict[@"categoryInfo"][@"name"];
+            subMenuCategory.ctgId = dict[@"categoryInfo"][@"ctgId"];
+            [mArray addObject:subMenuCategory];
+        }
+        self.subCategory = [mArray copy];
     }
     return self;
 }

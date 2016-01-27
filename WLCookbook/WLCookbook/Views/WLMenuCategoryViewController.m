@@ -15,6 +15,8 @@
 @interface WLMenuCategoryViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** 菜单类型数组*/
 @property (nonatomic,strong)NSArray *menuCategoryArray;
+/** 菜谱子分类类型名称数组*/
+@property (nonatomic,strong)NSArray *subMenuCategoryArray;
 /** 菜单文件路径*/
 @property (nonatomic,strong)NSString *menuPath;
 
@@ -37,6 +39,8 @@
 -(NSArray *)menuCategoryArray
 {
     if (!_menuCategoryArray) {
+        NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+        self.menuPath = [docPath stringByAppendingPathComponent:@"menuCtg"];
         NSData *data = [NSData dataWithContentsOfFile:self.menuPath];
         NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
         _menuCategoryArray = [unArchiver decodeObjectForKey:@"menuCategoryArray"];
@@ -47,7 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.preferredContentSize = CGSizeMake(280, 320);
+    self.preferredContentSize = CGSizeMake(280, 320);
     self.view.backgroundColor = [UIColor brownColor];
 }
 
@@ -75,14 +79,36 @@
 //        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
 //        if (!cell) {
 //            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        //        }
+//        }
         WLTableViewCell *cell = [WLTableViewCell cellWithTableView:tableView withImageName:@"bg_dropdown_leftpart" withHighlightedImageName:@"bg_dropdown_left_selected"];
         NSInteger selectedRow = [self.leftTableView indexPathForSelectedRow].row;
-        NSArray *subMenuCategoryArray = self.menuCategoryArray[selectedRow];
-        cell.textLabel.text = subMenuCategoryArray[indexPath.row];
+        WLSubMenuCategory *subMenuCategory = self.menuCategoryArray[selectedRow];
+        cell.textLabel.text = subMenuCategory.name;
         return cell;
     }
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//    if (!cell) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+//    }
+//    WLMenuCategory *menuCategory = self.menuCategoryArray[indexPath.row];
+//    cell.textLabel.text = menuCategory.name;
+//    return cell;
 }
+
+//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return 4;
+//}
+//
+//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//    if (!cell ) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+//    }
+//    cell.textLabel.text = @"test";
+//    return cell;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

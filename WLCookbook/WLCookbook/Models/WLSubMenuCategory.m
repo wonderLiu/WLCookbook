@@ -24,4 +24,19 @@
     return self;
 }
 
+-(instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super init]) {
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+        self.ctgId = [aDecoder decodeObjectForKey:@"ctgId"];
+    }
+    return self;
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeConditionalObject:self.name];
+    [aCoder encodeConditionalObject:self.ctgId];
+}
+
 @end
