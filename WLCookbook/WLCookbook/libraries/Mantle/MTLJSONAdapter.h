@@ -90,6 +90,12 @@ extern const NSInteger MTLJSONAdapterErrorInvalidJSONDictionary;
 /// does not actually exist in +propertyKeys.
 extern const NSInteger MTLJSONAdapterErrorInvalidJSONMapping;
 
+/// An exception was thrown and caught.
+extern const NSInteger MTLJSONAdapterErrorExceptionThrown;
+
+/// Associated with the NSException that was caught.
+extern NSString * const MTLJSONAdapterThrownExceptionErrorKey;
+
 /// Converts a MTLModel object to and from a JSON dictionary.
 @interface MTLJSONAdapter : NSObject
 
@@ -205,11 +211,11 @@ extern const NSInteger MTLJSONAdapterErrorInvalidJSONMapping;
 /// receiver if it's implemented. It supports NSURL conversion through
 /// +NSURLJSONTransformer.
 ///
-/// class - The class of the property to serialize. This property must not be
-///         nil.
+/// modelClass - The class of the property to serialize. This property must not be
+///              nil.
 ///
 /// Returns a value transformer or nil if no transformation should be used.
-+ (NSValueTransformer *)transformerForModelPropertiesOfClass:(Class)class;
++ (NSValueTransformer *)transformerForModelPropertiesOfClass:(Class)modelClass;
 
 /// A value transformer that should be used for a properties of the given
 /// primitive type.
@@ -271,7 +277,7 @@ extern const NSInteger MTLJSONAdapterErrorInvalidJSONMapping;
 - (NSDictionary *)JSONDictionary __attribute__((unavailable("Replaced by -JSONDictionaryFromModel:error:")));
 - (NSString *)JSONKeyPathForPropertyKey:(NSString *)key __attribute__((unavailable("Replaced by -serializablePropertyKeys:forModel:")));
 - (id)initWithJSONDictionary:(NSDictionary *)JSONDictionary modelClass:(Class)modelClass error:(NSError **)error __attribute__((unavailable("Replaced by -initWithModelClass:")));
-- (id)initWithModel:(id<MTLJSONSerializing>)model __attribute__((unavailable("Replaced by -initWithModelClass:")));
-- (NSDictionary *)serializeToJSONDictionary:(NSError **)error __attribute__((unavailable("Replaced by -JSONDictionaryFromModel:error:")));
+- (id)initWithModel:(id<MTLJSONSerializing>)model __attribute__((unavailable("Replaced by -initWithModelClass:"))) NS_SWIFT_UNAVAILABLE("Replaced by -initWithModelClass:");
+- (NSDictionary *)serializeToJSONDictionary:(NSError **)error __attribute__((unavailable("Replaced by -JSONDictionaryFromModel:error:"))) NS_SWIFT_UNAVAILABLE("Replaced by -JSONDictionaryFromModel:error:");
 
 @end
