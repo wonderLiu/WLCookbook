@@ -35,8 +35,10 @@
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeConditionalObject:self.name];
-    [aCoder encodeConditionalObject:self.ctgId];
+//    [aCoder encodeConditionalObject:self.name];
+//    [aCoder encodeConditionalObject:self.ctgId];
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.ctgId forKey:@"ctgId"];
 }
 
 @end

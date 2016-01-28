@@ -16,6 +16,9 @@
 /** 菜谱分类类型子分类*/
 @property (nonatomic,strong)NSArray *subCategory;
 
+
 +(id)menuCategoryFromDict:(NSDictionary*)menuCategoryDict;
+
+//+(id)subMenuCategoryFromDict:(NSDictionary*)subMenuCategoryDict;
 
 @end

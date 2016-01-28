@@ -11,6 +11,10 @@
 @interface WLMenuDataManager : NSObject
 
 //+(NSArray*)menuCategoryFromJSON:(id)responseObject isSubMenuCategory:(BOOL)isSubMenuCategory;
+
+
 +(NSArray*)menuCategoryFromJSON:(id)responseObject;
+
++(NSArray*)getMenuCategoryFromFile;
 
 @end

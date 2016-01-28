@@ -29,8 +29,9 @@
         [menuCategoryArray addObject:menuCtg];
     }
     NSArray *array = menuCategoryArray;
+    
     NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-    NSString *writePath = [docPath stringByAppendingPathComponent:@"menuCtg"];
+    NSString *writePath = [docPath stringByAppendingPathComponent:@"menuCtg.plist"];
     //归档操作
     NSMutableData *data = [NSMutableData data];
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
@@ -72,6 +73,17 @@
      
      */
     return [menuCategoryArray copy];
+}
+
++(NSArray *)getMenuCategoryFromFile
+{
+    NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    NSString  *menuPath = [docPath stringByAppendingPathComponent:@"menuCtg.plist"];
+    NSData *data = [NSData dataWithContentsOfFile:menuPath];
+    NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+    NSArray *menuCategoryArray = [unArchiver decodeObjectForKey:@"menuCategoryArray"];
+    [unArchiver finishDecoding];
+    return menuCategoryArray;
 }
 
 @end

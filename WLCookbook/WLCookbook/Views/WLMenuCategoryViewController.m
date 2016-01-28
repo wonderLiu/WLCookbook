@@ -17,8 +17,6 @@
 @property (nonatomic,strong)NSArray *menuCategoryArray;
 /** 菜谱子分类类型名称数组*/
 @property (nonatomic,strong)NSArray *subMenuCategoryArray;
-/** 菜单文件路径*/
-@property (nonatomic,strong)NSString *menuPath;
 
 @property (weak, nonatomic) IBOutlet UITableView *leftTableView;
 @property (weak, nonatomic) IBOutlet UITableView *rightTableView;
@@ -27,32 +25,18 @@
 
 @implementation WLMenuCategoryViewController
 
--(NSString *)menuPath
-{
-    if (!_menuPath) {
-        NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-        _menuPath = [docPath stringByAppendingPathComponent:@"menuCtg"];
-    }
-    return _menuPath;
-}
-
--(NSArray *)menuCategoryArray
-{
-    if (!_menuCategoryArray) {
-        NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-        self.menuPath = [docPath stringByAppendingPathComponent:@"menuCtg"];
-        NSData *data = [NSData dataWithContentsOfFile:self.menuPath];
-        NSKeyedUnarchiver *unArchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
-        _menuCategoryArray = [unArchiver decodeObjectForKey:@"menuCategoryArray"];
-        [unArchiver finishDecoding];
-    }
-    return _menuCategoryArray;
-}
+//-(NSArray *)menuCategoryArray
+//{
+//    if (!_menuCategoryArray) {
+//        _menuCategoryArray = [WLMenuDataManager getMenuCategoryFromFile];
+//    }
+//    return _menuCategoryArray;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.menuCategoryArray = [WLMenuDataManager getMenuCategoryFromFile];
     self.preferredContentSize = CGSizeMake(280, 320);
-    self.view.backgroundColor = [UIColor brownColor];
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -62,53 +46,66 @@
         return self.menuCategoryArray.count;
     }else{
         NSInteger selectedRow = [self.leftTableView indexPathForSelectedRow].row;
-        NSArray *subMenuCategoryArray = self.menuCategoryArray[selectedRow];
-        return subMenuCategoryArray.count;
+        WLMenuCategory *menuCategory = self.menuCategoryArray[selectedRow];
+        return menuCategory.subCategory.count;
     }
 }
+
+//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    if (tableView == self.leftTableView) {
+//        return 5;
+//    }else{
+//        return 8;
+//    }
+//}
+
+//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (tableView == self.leftTableView) {
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//        if (!cell) {
+//            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+//        }
+//        cell.textLabel.text = @"test_left";
+//        return cell;
+//    }else{
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//        if (!cell) {
+//            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+//        }
+//        cell.textLabel.text = @"test_right";
+//        return cell;
+//    }
+//}
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == self.leftTableView) {
         WLTableViewCell *cell = [WLTableViewCell cellWithTableView:tableView withImageName:@"bg_dropdown_leftpart" withHighlightedImageName:@"bg_dropdown_left_selected"];
+        
         WLMenuCategory *menuCategory = self.menuCategoryArray[indexPath.row];
         cell.textLabel.text = menuCategory.name;
-        cell.contentView.backgroundColor = [UIColor blackColor];
         return cell;
     }else{
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-//        if (!cell) {
-//            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-//        }
         WLTableViewCell *cell = [WLTableViewCell cellWithTableView:tableView withImageName:@"bg_dropdown_leftpart" withHighlightedImageName:@"bg_dropdown_left_selected"];
         NSInteger selectedRow = [self.leftTableView indexPathForSelectedRow].row;
-        WLSubMenuCategory *subMenuCategory = self.menuCategoryArray[selectedRow];
+        WLMenuCategory *menuCategory = self.menuCategoryArray[selectedRow];
+        NSArray *subMenuCategoryArray = menuCategory.subCategory;
+        WLSubMenuCategory *subMenuCategory = subMenuCategoryArray[indexPath.row];
         cell.textLabel.text = subMenuCategory.name;
         return cell;
     }
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-//    if (!cell) {
-//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-//    }
-//    WLMenuCategory *menuCategory = self.menuCategoryArray[indexPath.row];
-//    cell.textLabel.text = menuCategory.name;
-//    return cell;
 }
 
-//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return 4;
-//}
-//
-//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-//    if (!cell ) {
-//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-//    }
-//    cell.textLabel.text = @"test";
-//    return cell;
-//}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == self.leftTableView) {
+        [self.rightTableView reloadData];
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

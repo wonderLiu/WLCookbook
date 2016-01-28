@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMc-6D-voj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1555" y="389"/>
+            <point key="canvasLocation" x="929" y="354"/>
         </scene>
         <!--Navi View Controller-->
         <scene sceneID="CZL-AG-gKo">

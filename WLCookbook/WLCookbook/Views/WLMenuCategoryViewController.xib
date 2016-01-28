@@ -18,18 +18,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vUX-M4-4Vi">
-                    <rect key="frame" x="140" y="0.0" width="140" height="320"/>
+                    <rect key="frame" x="160" y="0.0" width="120" height="320"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="pUC-EA-tci"/>
+                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="gZn-pD-zn0"/>
                         <outlet property="delegate" destination="-1" id="wa9-Pa-RJZ"/>
                     </connections>
                 </tableView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pe1-Gh-ZjQ">
-                    <rect key="frame" x="0.0" y="0.0" width="140" height="320"/>
+                    <rect key="frame" x="0.0" y="0.0" width="160" height="320"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="160" id="UD8-IW-lKA"/>
+                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="SRA-dk-eIz"/>
                         <outlet property="delegate" destination="-1" id="gYi-y6-jWA"/>
@@ -50,6 +56,11 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="oNZ-Tn-5Ed"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="346" y="326"/>
         </view>
     </objects>
