@@ -14,15 +14,15 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="280" height="320"/>
+            <rect key="frame" x="0.0" y="0.0" width="280" height="264"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vUX-M4-4Vi">
-                    <rect key="frame" x="160" y="0.0" width="120" height="320"/>
+                    <rect key="frame" x="170" y="0.0" width="110" height="264"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="120" id="pUC-EA-tci"/>
+                        <constraint firstAttribute="width" constant="110" id="pUC-EA-tci"/>
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="gZn-pD-zn0"/>
@@ -30,11 +30,11 @@
                     </connections>
                 </tableView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pe1-Gh-ZjQ">
-                    <rect key="frame" x="0.0" y="0.0" width="160" height="320"/>
+                    <rect key="frame" x="0.0" y="0.0" width="170" height="264"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="160" id="UD8-IW-lKA"/>
+                        <constraint firstAttribute="width" constant="170" id="UD8-IW-lKA"/>
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="SRA-dk-eIz"/>

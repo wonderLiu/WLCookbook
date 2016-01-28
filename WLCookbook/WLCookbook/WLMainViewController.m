@@ -11,6 +11,7 @@
 #import <MOBFoundation/MOBFJson.h>
 #import "WLMenuDataManager.h"
 #import "WLMenuCategory.h"
+#import "WLSubMenuCategory.h"
 #import "WLMenuCategoryViewController.h"
 
 @interface WLMainViewController ()<UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate>
@@ -51,8 +52,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getCookCategoryList];
+    //[self getCookCategoryList];
     [self setNavigationCenterButton];
+    [self listenNotification];
 }
 
 /** 导航栏添加中间按钮*/
@@ -78,6 +80,13 @@
 -(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {
     return UIModalPresentationNone;
+}
+
+/** 收听通知*/
+-(void)listenNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchMenuInfo:) name:@"WLMenuCategoryDidChanged" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchMenuInfo:) name:@"WLMenuSubCategoryDidChanged" object:nil];
 }
 
 #pragma mark - Private
@@ -128,6 +137,24 @@
                    }
                    //[theController showLog:logContent];
                }];
+}
+
+/**
+ *  获取菜谱信息
+ */
+-(void)searchMenuInfo:(NSNotification*)noti
+{
+    WLMenuCategory *selectedMenuCtg = noti.userInfo[@"WLMenuCategory"];
+    if ([selectedMenuCtg.name isEqualToString:@"全部菜谱"]) {
+        [MobAPI sendRequest:[MOBACookRequest searchMenuRequestByCid:nil name:nil page:1 size:20] onResult:^(MOBAResponse *response) {
+            NSLog(@"返回数据为%@",response.responder);
+        }];
+    }else{
+        WLSubMenuCategory *selectedSubMenuCtg = noti.userInfo[@"WLSubMenuCategory"];
+        [MobAPI sendRequest:[MOBACookRequest searchMenuRequestByCid:nil name:selectedSubMenuCtg.name page:1 size:20] onResult:^(MOBAResponse *response) {
+            NSLog(@"子分类返回数据为%@",response.responder);
+        }];
+    }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
