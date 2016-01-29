@@ -4,6 +4,7 @@
 # use_frameworks!
 
 target 'WLCookbook' do
-pod 'Mantle'
+pod 'Masonry'
+    
 end
 

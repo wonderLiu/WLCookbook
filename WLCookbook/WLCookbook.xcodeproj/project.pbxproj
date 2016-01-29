@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		513EC35E188C9293E291D956 /* libPods-WLCookbook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBC3ED5FB995672AAEB305F /* libPods-WLCookbook.a */; };
-		96293FCA1C5A0CE700C1D027 /* WLMenuDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 96293FC91C5A0CE700C1D027 /* WLMenuDetail.m */; };
 		96293FF11C5A0E1A00C1D027 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 96293FCF1C5A0E1A00C1D027 /* EXTRuntimeExtensions.m */; };
 		96293FF21C5A0E1A00C1D027 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 96293FD11C5A0E1A00C1D027 /* EXTScope.m */; };
 		96293FF31C5A0E1A00C1D027 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96293FD31C5A0E1A00C1D027 /* Info.plist */; };
@@ -52,8 +51,6 @@
 		27227318384459C884C7FE4E /* Pods-WLCookbook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WLCookbook.release.xcconfig"; path = "Pods/Target Support Files/Pods-WLCookbook/Pods-WLCookbook.release.xcconfig"; sourceTree = "<group>"; };
 		3F8D9998D9F1E1BA20AD7FB4 /* Pods-WLCookbook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WLCookbook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WLCookbook/Pods-WLCookbook.debug.xcconfig"; sourceTree = "<group>"; };
 		5DBC3ED5FB995672AAEB305F /* libPods-WLCookbook.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WLCookbook.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		96293FC81C5A0CE700C1D027 /* WLMenuDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLMenuDetail.h; sourceTree = "<group>"; };
-		96293FC91C5A0CE700C1D027 /* WLMenuDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLMenuDetail.m; sourceTree = "<group>"; };
 		96293FCD1C5A0E1A00C1D027 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTKeyPathCoding.h; sourceTree = "<group>"; };
 		96293FCE1C5A0E1A00C1D027 /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTRuntimeExtensions.h; sourceTree = "<group>"; };
 		96293FCF1C5A0E1A00C1D027 /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTRuntimeExtensions.m; sourceTree = "<group>"; };
@@ -283,8 +280,6 @@
 				D23B07341C573E4C002FFC0E /* WLMenuCategory.m */,
 				96AF30741C589EE80051D24E /* WLSubMenuCategory.h */,
 				96AF30751C589EE80051D24E /* WLSubMenuCategory.m */,
-				96293FC81C5A0CE700C1D027 /* WLMenuDetail.h */,
-				96293FC91C5A0CE700C1D027 /* WLMenuDetail.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -460,7 +455,6 @@
 				96AF30761C589EE80051D24E /* WLSubMenuCategory.m in Sources */,
 				96293FF41C5A0E1A00C1D027 /* MTLJSONAdapter.m in Sources */,
 				D23B072A1C57231B002FFC0E /* WLMainViewController.m in Sources */,
-				96293FCA1C5A0CE700C1D027 /* WLMenuDetail.m in Sources */,
 				96293FF81C5A0E1A00C1D027 /* MTLTransformerErrorHandling.m in Sources */,
 				96293FF21C5A0E1A00C1D027 /* EXTScope.m in Sources */,
 				D23B07301C573D25002FFC0E /* WLMenuDataManager.m in Sources */,
