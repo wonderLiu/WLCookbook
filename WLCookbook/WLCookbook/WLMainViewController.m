@@ -17,6 +17,7 @@
 #import <Mantle/Mantle.h>
 #import "AFNetworking.h"
 #import "UIImageView+WebCache.h"
+#import "WLMenuTableViewCell.h"
 
 @interface WLMainViewController ()<UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate>
 
@@ -158,10 +159,9 @@
     }else{
         WLSubMenuCategory *selectedSubMenuCtg = noti.userInfo[@"WLSubMenuCategory"];
         [MobAPI sendRequest:[MOBACookRequest searchMenuRequestByCid:selectedSubMenuCtg.ctgId name:nil page:1 size:20] onResult:^(MOBAResponse *response) {
-            
             self.menuDetail = [MTLJSONAdapter modelOfClass:[WLMenuDetail class] fromJSONDictionary:response.responder error:nil];
-            WLMenuList *menuList = self.menuDetail.menuList[0];
             [self.menuTableView reloadData];
+            WLMenuList *menuList = self.menuDetail.menuList[0];
             NSLog(@"----%@", menuList.thumbnail);
         }];
     }
@@ -175,14 +175,14 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    WLMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[WLMenuTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MenuCell"];
     }
     WLMenuList *menuList = self.menuDetail.menuList[indexPath.row];
     WLMenuDescription *menuDesc = menuList.recipe;
-    cell.textLabel.text = menuDesc.title;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:menuList.thumbnail]];
+    cell.menuNameLabel.text = menuDesc.title;
+    [cell.menuImageView sd_setImageWithURL:[NSURL URLWithString:menuList.thumbnail] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     return cell;
 }
 

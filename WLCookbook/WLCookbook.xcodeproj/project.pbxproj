@@ -39,8 +39,10 @@
 		961D09EA1C5B54D500BCE0B8 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 961D09DA1C5B54D500BCE0B8 /* UIImageView+HighlightedWebCache.m */; };
 		961D09EB1C5B54D500BCE0B8 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 961D09DC1C5B54D500BCE0B8 /* UIImageView+WebCache.m */; };
 		961D09EC1C5B54D500BCE0B8 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 961D09DE1C5B54D500BCE0B8 /* UIView+WebCacheOperation.m */; };
+		967305AC1C5B61E6000EF640 /* WLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 967305AB1C5B61E6000EF640 /* WLTableViewCell.m */; };
+		967305B01C5B64D4000EF640 /* WLMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 967305AE1C5B64D4000EF640 /* WLMenuTableViewCell.m */; };
+		967305B11C5B64D4000EF640 /* WLMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 967305AF1C5B64D4000EF640 /* WLMenuTableViewCell.xib */; };
 		96AF30761C589EE80051D24E /* WLSubMenuCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 96AF30751C589EE80051D24E /* WLSubMenuCategory.m */; };
-		96AF30791C58B51B0051D24E /* WLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96AF30781C58B51B0051D24E /* WLTableViewCell.m */; };
 		96DBA6941C5763EB0072AF2A /* WLMenuCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96DBA6921C5763EB0072AF2A /* WLMenuCategoryViewController.m */; };
 		96DBA6951C5763EB0072AF2A /* WLMenuCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96DBA6931C5763EB0072AF2A /* WLMenuCategoryViewController.xib */; };
 		D23B07001C571BD5002FFC0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D23B06FF1C571BD5002FFC0E /* main.m */; };
@@ -133,10 +135,13 @@
 		961D09DC1C5B54D500BCE0B8 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		961D09DD1C5B54D500BCE0B8 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		961D09DE1C5B54D500BCE0B8 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		967305AA1C5B61E6000EF640 /* WLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTableViewCell.h; sourceTree = "<group>"; };
+		967305AB1C5B61E6000EF640 /* WLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTableViewCell.m; sourceTree = "<group>"; };
+		967305AD1C5B64D4000EF640 /* WLMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLMenuTableViewCell.h; sourceTree = "<group>"; };
+		967305AE1C5B64D4000EF640 /* WLMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLMenuTableViewCell.m; sourceTree = "<group>"; };
+		967305AF1C5B64D4000EF640 /* WLMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WLMenuTableViewCell.xib; sourceTree = "<group>"; };
 		96AF30741C589EE80051D24E /* WLSubMenuCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLSubMenuCategory.h; sourceTree = "<group>"; };
 		96AF30751C589EE80051D24E /* WLSubMenuCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLSubMenuCategory.m; sourceTree = "<group>"; };
-		96AF30771C58B51B0051D24E /* WLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLTableViewCell.h; sourceTree = "<group>"; };
-		96AF30781C58B51B0051D24E /* WLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLTableViewCell.m; sourceTree = "<group>"; };
 		96DBA6911C5763EB0072AF2A /* WLMenuCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLMenuCategoryViewController.h; sourceTree = "<group>"; };
 		96DBA6921C5763EB0072AF2A /* WLMenuCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLMenuCategoryViewController.m; sourceTree = "<group>"; };
 		96DBA6931C5763EB0072AF2A /* WLMenuCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WLMenuCategoryViewController.xib; sourceTree = "<group>"; };
@@ -373,11 +378,14 @@
 		D23B072D1C573D07002FFC0E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				96AF30771C58B51B0051D24E /* WLTableViewCell.h */,
-				96AF30781C58B51B0051D24E /* WLTableViewCell.m */,
+				967305AA1C5B61E6000EF640 /* WLTableViewCell.h */,
+				967305AB1C5B61E6000EF640 /* WLTableViewCell.m */,
 				96DBA6911C5763EB0072AF2A /* WLMenuCategoryViewController.h */,
 				96DBA6921C5763EB0072AF2A /* WLMenuCategoryViewController.m */,
 				96DBA6931C5763EB0072AF2A /* WLMenuCategoryViewController.xib */,
+				967305AD1C5B64D4000EF640 /* WLMenuTableViewCell.h */,
+				967305AE1C5B64D4000EF640 /* WLMenuTableViewCell.m */,
+				967305AF1C5B64D4000EF640 /* WLMenuTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -472,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96DBA6951C5763EB0072AF2A /* WLMenuCategoryViewController.xib in Resources */,
+				967305B11C5B64D4000EF640 /* WLMenuTableViewCell.xib in Resources */,
 				D23B07111C571BD5002FFC0E /* LaunchScreen.storyboard in Resources */,
 				D23B070E1C571BD5002FFC0E /* Assets.xcassets in Resources */,
 				D23B07091C571BD5002FFC0E /* Main.storyboard in Resources */,
@@ -536,7 +545,6 @@
 				961D09711C5B446A00BCE0B8 /* AFHTTPRequestOperation.m in Sources */,
 				D23B070C1C571BD5002FFC0E /* WLCookbook.xcdatamodeld in Sources */,
 				D23B07351C573E4C002FFC0E /* WLMenuCategory.m in Sources */,
-				96AF30791C58B51B0051D24E /* WLTableViewCell.m in Sources */,
 				D23B07381C575434002FFC0E /* WLNaviViewController.m in Sources */,
 				961D097A1C5B446A00BCE0B8 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				961D09791C5B446A00BCE0B8 /* AFURLSessionManager.m in Sources */,
@@ -547,6 +555,7 @@
 				96AF30761C589EE80051D24E /* WLSubMenuCategory.m in Sources */,
 				961D09741C5B446A00BCE0B8 /* AFNetworkReachabilityManager.m in Sources */,
 				D23B072A1C57231B002FFC0E /* WLMainViewController.m in Sources */,
+				967305B01C5B64D4000EF640 /* WLMenuTableViewCell.m in Sources */,
 				961D09E91C5B54D500BCE0B8 /* UIImage+MultiFormat.m in Sources */,
 				961D097E1C5B446A00BCE0B8 /* UIImageView+AFNetworking.m in Sources */,
 				961D097F1C5B446A00BCE0B8 /* UIProgressView+AFNetworking.m in Sources */,
@@ -570,6 +579,7 @@
 				961D09E31C5B54D500BCE0B8 /* SDWebImageDownloader.m in Sources */,
 				961D09811C5B446A00BCE0B8 /* UIWebView+AFNetworking.m in Sources */,
 				96DBA6941C5763EB0072AF2A /* WLMenuCategoryViewController.m in Sources */,
+				967305AC1C5B61E6000EF640 /* WLTableViewCell.m in Sources */,
 				D23B07001C571BD5002FFC0E /* main.m in Sources */,
 				961D09E21C5B54D500BCE0B8 /* SDWebImageDecoder.m in Sources */,
 				961D09E11C5B54D500BCE0B8 /* SDWebImageCompat.m in Sources */,
