@@ -11,6 +11,7 @@
 /** 单个菜谱结果详情*/
 @interface WLMenuDescription : MTLModel<MTLJSONSerializing>
 
+@property (nonatomic,strong) NSString *img;
 @property (nonatomic,strong) NSString *ingredients;
 @property (nonatomic,strong) NSString *method;
 @property (nonatomic,strong) NSString *sumary;

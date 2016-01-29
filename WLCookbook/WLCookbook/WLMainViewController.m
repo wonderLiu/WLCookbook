@@ -16,6 +16,7 @@
 #import "WLMenuDetail.h"
 #import <Mantle/Mantle.h>
 #import "AFNetworking.h"
+#import "UIImageView+WebCache.h"
 
 @interface WLMainViewController ()<UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate>
 
@@ -25,6 +26,7 @@
 @property (nonatomic,strong) WLMenuCategoryViewController *ctgViewController;
 
 @property (nonatomic,strong) WLMenuDetail *menuDetail;
+
 @end
 
 @implementation WLMainViewController
@@ -90,8 +92,8 @@
 /** 收听通知*/
 -(void)listenNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchMenuInfo1:) name:@"WLMenuCategoryDidChanged" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchMenuInfo1:) name:@"WLMenuSubCategoryDidChanged" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchMenuInfo:) name:@"WLMenuCategoryDidChanged" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchMenuInfo:) name:@"WLMenuSubCategoryDidChanged" object:nil];
 }
 
 #pragma mark - Private
@@ -165,29 +167,6 @@
     }
 }
 
--(void)searchMenuInfo1:(NSNotification*)noti
-{
-    WLMenuCategory *selectedMenuCtg = noti.userInfo[@"WLMenuCategory"];
-    if ([selectedMenuCtg.name isEqualToString:@"全部菜谱"]) {
-        
-    }else{
-        WLSubMenuCategory *selectedSubMenuCtg = noti.userInfo[@"WLSubMenuCategory"];
-//        [MobAPI sendRequest:[MOBACookRequest searchMenuRequestByCid:selectedSubMenuCtg.ctgId name:nil page:1 size:20] onResult:^(MOBAResponse *response) {
-//            
-//            self.menuDetail = [MTLJSONAdapter modelOfClass:[WLMenuDetail class] fromJSONDictionary:response.responder error:nil];
-//            WLMenuList *menuList = self.menuDetail.menuList[0];
-//            [self.menuTableView reloadData];
-//            NSLog(@"----%@", menuList.thumbnail);
-//        }];
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        NSString *url = @"http://apicloud.mob.com/v1/cook/menu/search?key=f24d37112100&cid=0010001007&page=1&size=20";
-        [manager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-            NSLog(@"====");
-        } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-            NSLog(@"----");
-        }];
-    }
-}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -203,6 +182,7 @@
     WLMenuList *menuList = self.menuDetail.menuList[indexPath.row];
     WLMenuDescription *menuDesc = menuList.recipe;
     cell.textLabel.text = menuDesc.title;
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:menuList.thumbnail]];
     return cell;
 }
 

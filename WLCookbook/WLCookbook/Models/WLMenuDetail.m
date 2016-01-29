@@ -35,7 +35,8 @@
 
 +(NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return @{@"ingredients"     :  @"ingredients",
+    return @{@"img"             :  @"img",
+             @"ingredients"     :  @"ingredients",
              @"method"          :  @"method",
              @"sumary"          :  @"sumary",
              @"title"           :  @"title"};
