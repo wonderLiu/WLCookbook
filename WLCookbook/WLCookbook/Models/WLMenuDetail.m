@@ -51,7 +51,8 @@
              @"ctgTitles"   : @"ctgTitles",
              @"menuId"      : @"menuId",
              @"name"        : @"name",
-             @"recipe"      : @"recipe"};
+             @"recipe"      : @"recipe",
+             @"thumbnail"   : @"thumbnail"};
 }
 
 @end

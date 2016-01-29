@@ -26,6 +26,7 @@
 @property (nonatomic,strong) NSString *menuId;
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) WLMenuDescription *recipe;
+@property (nonatomic,strong) NSString *thumbnail;
 
 @end
 
