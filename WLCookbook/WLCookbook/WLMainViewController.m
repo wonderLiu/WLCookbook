@@ -13,6 +13,8 @@
 #import "WLMenuCategory.h"
 #import "WLSubMenuCategory.h"
 #import "WLMenuCategoryViewController.h"
+#import "WLMenuDetail.h"
+#import <Mantle/Mantle.h>
 
 @interface WLMainViewController ()<UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate>
 
@@ -20,6 +22,8 @@
 @property (nonatomic,strong) NSArray *menuCategoryArray;
 /** 弹出的popView*/
 @property (nonatomic,strong) WLMenuCategoryViewController *ctgViewController;
+
+@property (nonatomic,strong) WLMenuDetail *menuDetail;
 @end
 
 @implementation WLMainViewController
@@ -130,7 +134,6 @@
                        NSLog(@"%@",logContent);
                    } else {
                        logContent = [NSString stringWithFormat:@"request success!\n%@", [MOBFJson jsonStringFromObject:response.responder]];
-                       //NSLog(@"%@",response.responder);
                        self.menuCategoryArray = [WLMenuDataManager menuCategoryFromJSON:response.responder ];
                        NSLog(@"%@",self.menuCategoryArray);
                        [self.menuTableView reloadData];
@@ -147,19 +150,22 @@
     WLMenuCategory *selectedMenuCtg = noti.userInfo[@"WLMenuCategory"];
     if ([selectedMenuCtg.name isEqualToString:@"全部菜谱"]) {
         [MobAPI sendRequest:[MOBACookRequest searchMenuRequestByCid:nil name:nil page:1 size:20] onResult:^(MOBAResponse *response) {
-            NSLog(@"返回数据为%@",response.responder);
+            WLMenuDetail *menuDetail = [MTLJSONAdapter modelOfClass:[WLMenuDetail class] fromJSONDictionary:response.responder error:nil];
         }];
     }else{
         WLSubMenuCategory *selectedSubMenuCtg = noti.userInfo[@"WLSubMenuCategory"];
-        [MobAPI sendRequest:[MOBACookRequest searchMenuRequestByCid:nil name:selectedSubMenuCtg.name page:1 size:20] onResult:^(MOBAResponse *response) {
-            NSLog(@"子分类返回数据为%@",response.responder);
+        [MobAPI sendRequest:[MOBACookRequest searchMenuRequestByCid:selectedSubMenuCtg.ctgId name:nil page:1 size:20] onResult:^(MOBAResponse *response) {
+            self.menuDetail = [MTLJSONAdapter modelOfClass:[WLMenuDetail class] fromJSONDictionary:response.responder error:nil];
+            WLMenuList *menuList = self.menuDetail.menuList[0];
+            [self.menuTableView reloadData];
+            NSLog(@"%@", menuList.ctgTitles);
         }];
     }
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.menuCategoryArray.count;
+    return self.menuDetail.menuList.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -168,10 +174,9 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.contentView.backgroundColor = [UIColor orangeColor];
-    WLMenuCategory *menuCtg = self.menuCategoryArray[indexPath.row];
-    cell.textLabel.text = menuCtg.name;
-    cell.detailTextLabel.text = menuCtg.ctgId;
+    WLMenuList *menuList = self.menuDetail.menuList[indexPath.row];
+    WLMenuDescription *menuDesc = menuList.recipe;
+    cell.textLabel.text = menuDesc.title;
     return cell;
 }
 
