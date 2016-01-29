@@ -6,10 +6,10 @@
 //  Copyright © 2016年 wonderLiu. All rights reserved.
 //
 
-#import "MTLModel.h"
+#import <Mantle/Mantle.h>
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface WLMenuDetail : MTLModel<MTLJSONSerializing>
+@interface WLMenuDetail : MTLModel <MTLJSONSerializing>
 
 @end
